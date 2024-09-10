@@ -2,8 +2,9 @@ from flask import Flask
 import mysql.connector
 import os
 from dotenv import load_dotenv
-
 from flask_cors import CORS, cross_origin
+
+import allefuncties
 
 load_dotenv()
 app = Flask(__name__)
@@ -50,3 +51,11 @@ def uitrekenen(getal1, getal2):
 @app.route("/favorietestad/<stad>")
 def favorietestad(stad):
     return "<p>Mijn favoriete stad is: "+stad+"</p>"
+
+@app.route("/alleartikelen/")
+def alleartikelen():
+    return allefuncties.alleartikelen_af()
+
+@app.route("/artikeltoevoegen/<titel>/<auteur>/<categorie>")
+def artikeltoevoegen(titel, auteur, categorie):
+    return allefuncties.artikeltoevoegen_af(titel, auteur, categorie)
