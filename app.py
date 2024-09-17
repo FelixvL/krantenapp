@@ -19,7 +19,7 @@ def hello_world():
 @app.route("/tweede/<artikeltitel>")
 def tweede(artikeltitel):
     mydb = mysql.connector.connect(
-    host="aidatabasedontdelete.mysql.database.azure.com",  #port erbij indien mac
+    host="pythondb.mysql.database.azure.com",  #port erbij indien mac
     user="felixadmin",
     password=os.environ.get('ONZEDATABASEWACHTWOORD'),
     database="krantenapp"
