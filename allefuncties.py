@@ -3,7 +3,7 @@ import os
 
 def alleartikelen_af():
     mydb = mysql.connector.connect(
-    host="aidatabasedontdelete.mysql.database.azure.com",  #port erbij indien mac
+    host="pythondb.mysql.database.azure.com",  #port erbij indien mac
     user="felixadmin",
     password=os.environ.get('ONZEDATABASEWACHTWOORD'),
     database="krantenapp"
@@ -23,7 +23,7 @@ def alleartikelen_af():
 
 def artikeltoevoegen_af(titel, auteur, categorie):
     mydb = mysql.connector.connect(
-    host="aidatabasedontdelete.mysql.database.azure.com",  #port erbij indien mac
+    host="pythondb.mysql.database.azure.com",  #port erbij indien mac
     user="felixadmin",
     password=os.environ.get('ONZEDATABASEWACHTWOORD'),
     database="krantenapp"

@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'krantenapp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E00838148CA9463E95D2452AF9AB2EC7 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E4B06F2D410C482B94D3E5A2319C0BEA }}
