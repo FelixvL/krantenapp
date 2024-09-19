@@ -62,4 +62,4 @@ def artikeltoevoegen(titel, auteur, categorie):
 
 @app.route("/artikelmbvid/<artikelid>")
 def artikelmbvid(artikelid):
-    return allefuncties.artikelmbvid_af(artikelid)
+    return allefuncties.artikelmbvid_af(int(artikelid))

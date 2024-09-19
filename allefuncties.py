@@ -39,7 +39,7 @@ def artikeltoevoegen_af(titel, auteur, categorie):
 
 def artikelmbvid_af(artikelid):
     mydb = mysql.connector.connect(
-    host="aidatabasedontdelete.mysql.database.azure.com",  #port erbij indien mac
+    host="pythondb.mysql.database.azure.com",  #port erbij indien mac
     user="felixadmin",
     password=os.environ.get('ONZEDATABASEWACHTWOORD'),
     database="krantenapp"
@@ -47,7 +47,8 @@ def artikelmbvid_af(artikelid):
 
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT * FROM artikel WHERE id="+artikelid)
+    sql = ("SELECT * FROM artikel WHERE id = "+str(artikelid))
+    mycursor.execute(sql)
 
     myresult = mycursor.fetchall()
     keys = [i[0] for i in mycursor.description]
