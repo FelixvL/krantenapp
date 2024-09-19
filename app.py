@@ -59,3 +59,7 @@ def alleartikelen():
 @app.route("/artikeltoevoegen/<titel>/<auteur>/<categorie>")
 def artikeltoevoegen(titel, auteur, categorie):
     return allefuncties.artikeltoevoegen_af(titel, auteur, categorie)
+
+@app.route("/artikelmbvid/<artikelid>")
+def artikelmbvid(artikelid):
+    return allefuncties.artikelmbvid_af(int(artikelid))

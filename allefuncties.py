@@ -36,3 +36,24 @@ def artikeltoevoegen_af(titel, auteur, categorie):
 
     mydb.commit()
     return "opgeslagen"
+
+def artikelmbvid_af(artikelid):
+    mydb = mysql.connector.connect(
+    host="pythondb.mysql.database.azure.com",  #port erbij indien mac
+    user="felixadmin",
+    password=os.environ.get('ONZEDATABASEWACHTWOORD'),
+    database="krantenapp"
+    )
+
+    mycursor = mydb.cursor()
+
+    sql = ("SELECT * FROM artikel WHERE id = "+str(artikelid))
+    mycursor.execute(sql)
+
+    myresult = mycursor.fetchall()
+    keys = [i[0] for i in mycursor.description]
+
+    data = [
+        dict(zip(keys, row)) for row in myresult
+    ]
+    return data
