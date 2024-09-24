@@ -28,14 +28,14 @@ def tweede(artikeltitel):
 
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT * FROM artikel")
+    mycursor.execute("SELECT * FROM artikel3")
 
     myresult = mycursor.fetchall()
 
     for x in myresult:
         print(x)
 
-    sql = "INSERT INTO artikel (titel, auteur) VALUES (%s, %s)"
+    sql = "INSERT INTO artikel3 (titel, auteur) VALUES (%s, %s)"
     val = (artikeltitel, "harry mulish")
     mycursor.execute(sql, val)
 
