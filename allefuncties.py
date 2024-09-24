@@ -1,13 +1,16 @@
 import mysql.connector
 import os
-
-def alleartikelen_af():
+def maakverbinding():
     mydb = mysql.connector.connect(
     host="pythondb.mysql.database.azure.com",  #port erbij indien mac
     user="felixadmin",
     password=os.environ.get('ONZEDATABASEWACHTWOORD'),
     database="krantenapp"
     )
+    return mydb
+
+def alleartikelen_af():
+    mydb = maakverbinding()
 
     mycursor = mydb.cursor()
 
@@ -22,15 +25,10 @@ def alleartikelen_af():
     return data
 
 def artikeltoevoegen_af(titel, auteur, categorie):
-    mydb = mysql.connector.connect(
-    host="pythondb.mysql.database.azure.com",  #port erbij indien mac
-    user="felixadmin",
-    password=os.environ.get('ONZEDATABASEWACHTWOORD'),
-    database="krantenapp"
-    )
+    mydb = maakverbinding()
 
     mycursor = mydb.cursor()
-    sql = "INSERT INTO artikel (titel, auteur, categorie) VALUES (%s, %s, %s)"
+    sql = "INSERT INTO artikel (titel, auteur, categorie, publiceerdatum) VALUES (%s, %s, %s, CURRENT_TIMESTAMP())"
     val = (titel, auteur, categorie)
     mycursor.execute(sql, val)
 
@@ -38,12 +36,7 @@ def artikeltoevoegen_af(titel, auteur, categorie):
     return "opgeslagen"
 
 def artikelmbvid_af(artikelid):
-    mydb = mysql.connector.connect(
-    host="pythondb.mysql.database.azure.com",  #port erbij indien mac
-    user="felixadmin",
-    password=os.environ.get('ONZEDATABASEWACHTWOORD'),
-    database="krantenapp"
-    )
+    mydb = maakverbinding()
 
     mycursor = mydb.cursor()
 
@@ -57,3 +50,13 @@ def artikelmbvid_af(artikelid):
         dict(zip(keys, row)) for row in myresult
     ]
     return data
+
+def heelartikeltoevoegen(gegevens):
+    mydb = maakverbinding()
+
+    mycursor = mydb.cursor()
+    sql = "INSERT INTO artikel (titel, auteur, categorie, publiceerdatum, inhoud, foto) VALUES (%s, %s, %s, CURRENT_TIMESTAMP(), %s, %s)"
+    val = (gegevens["titel"], gegevens["auteur"], gegevens["categorie"], gegevens["inhoud"], gegevens["foto"])
+    mycursor.execute(sql, val)
+    mydb.commit()
+    return "{\"inhoud\":\"de post is gelukt\"}"

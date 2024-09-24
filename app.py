@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request
 import mysql.connector
 import os
 from dotenv import load_dotenv
@@ -63,3 +64,11 @@ def artikeltoevoegen(titel, auteur, categorie):
 @app.route("/artikelmbvid/<artikelid>")
 def artikelmbvid(artikelid):
     return allefuncties.artikelmbvid_af(int(artikelid))
+
+
+@app.route("/heelartikeltoevoegen", methods = ['GET','POST'])
+def heelartikeltoevoegen():
+    if request.method == 'POST':
+        return allefuncties.heelartikeltoevoegen(request.json)
+    else: 
+        return "{\"info\":\"Dit was geen post\"}"
