@@ -14,7 +14,7 @@ def alleartikelen_af():
 
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT * FROM artikel")
+    mycursor.execute("SELECT * FROM artikel3")
 
     myresult = mycursor.fetchall()
     keys = [i[0] for i in mycursor.description]
@@ -28,7 +28,7 @@ def artikeltoevoegen_af(titel, auteur, categorie):
     mydb = maakverbinding()
 
     mycursor = mydb.cursor()
-    sql = "INSERT INTO artikel (titel, auteur, categorie, publiceerdatum) VALUES (%s, %s, %s, CURRENT_TIMESTAMP())"
+    sql = "INSERT INTO artikel3 (titel, auteur, categorie, publiceerdatum) VALUES (%s, %s, %s, CURRENT_TIMESTAMP())"
     val = (titel, auteur, categorie)
     mycursor.execute(sql, val)
 
@@ -40,7 +40,7 @@ def artikelmbvid_af(artikelid):
 
     mycursor = mydb.cursor()
 
-    sql = ("SELECT * FROM artikel WHERE id = "+str(artikelid))
+    sql = ("SELECT * FROM artikel3 WHERE id = "+str(artikelid))
     mycursor.execute(sql)
 
     myresult = mycursor.fetchall()
@@ -55,7 +55,7 @@ def heelartikeltoevoegen(gegevens):
     mydb = maakverbinding()
 
     mycursor = mydb.cursor()
-    sql = "INSERT INTO artikel (titel, auteur, categorie, publiceerdatum, inhoud, foto) VALUES (%s, %s, %s, CURRENT_TIMESTAMP(), %s, %s)"
+    sql = "INSERT INTO artikel3 (titel, auteur, categorie, publiceerdatum, inhoud, foto) VALUES (%s, %s, %s, CURRENT_TIMESTAMP(), %s, %s)"
     val = (gegevens["titel"], gegevens["auteur"], gegevens["categorie"], gegevens["inhoud"], gegevens["foto"])
     mycursor.execute(sql, val)
     mydb.commit()
