@@ -51,6 +51,16 @@ def artikelmbvid_af(artikelid):
     ]
     return data
 
+def verwijderartikelmbvid_af(artikelid):
+    mydb = maakverbinding()
+
+    mycursor = mydb.cursor()
+    sql = "DELETE FROM artikel3 WHERE id = "+str(artikelid)
+    mycursor.execute(sql)
+    mydb.commit()
+    return "deleted"
+
+
 def heelartikeltoevoegen(gegevens):
     mydb = maakverbinding()
 

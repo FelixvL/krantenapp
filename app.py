@@ -65,6 +65,10 @@ def artikeltoevoegen(titel, auteur, categorie):
 def artikelmbvid(artikelid):
     return allefuncties.artikelmbvid_af(int(artikelid))
 
+@app.route("/verwijderartikelmbvid/<artikelid>")
+def verwijderartikelmbvid(artikelid):
+    return allefuncties.verwijderartikelmbvid_af(int(artikelid))
+
 
 @app.route("/heelartikeltoevoegen", methods = ['GET','POST'])
 def heelartikeltoevoegen():
