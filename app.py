@@ -15,7 +15,7 @@ cors = CORS(app)
 # je mag nooit 2 dezelfde routes hebben of 2 dezelfde methode namen
 @app.route("/")
 def hello_world():
-    return "<p>Hello, Groningen! Of ik bedoel friesland</p>"
+    return "<p>Hello, Groningen! Of ik bedoel friesland Extra</p>"
 
 @app.route("/tweede/<artikeltitel>")
 def tweede(artikeltitel):
@@ -76,3 +76,8 @@ def heelartikeltoevoegen():
         return allefuncties.heelartikeltoevoegen(request.json)
     else: 
         return "{\"info\":\"Dit was geen post\"}"
+
+    
+@app.route("/artikel_stel_prioriteit_in/<artikelid>/<prioriteit>")
+def artikel_stel_prioriteit_in(artikelid, prioriteit):
+    return allefuncties.artikel_stel_prioriteit_in_af(artikelid, prioriteit)
