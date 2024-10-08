@@ -15,7 +15,7 @@ cors = CORS(app)
 # je mag nooit 2 dezelfde routes hebben of 2 dezelfde methode namen
 @app.route("/")
 def hello_world():
-    return "<p>Hello, Groningen!</p>"
+    return "<p>Hello, Groningen! Of ik bedoel friesland</p>"
 
 @app.route("/tweede/<artikeltitel>")
 def tweede(artikeltitel):
