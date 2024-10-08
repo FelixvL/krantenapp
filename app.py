@@ -76,3 +76,8 @@ def heelartikeltoevoegen():
         return allefuncties.heelartikeltoevoegen(request.json)
     else: 
         return "{\"info\":\"Dit was geen post\"}"
+
+    
+@app.route("/artikel_stel_prioriteit_in/<artikelid>/<prioriteit>")
+def artikel_stel_prioriteit_in(artikelid, prioriteit):
+    return allefuncties.artikel_stel_prioriteit_in_af(artikelid, prioriteit)

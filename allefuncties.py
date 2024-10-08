@@ -70,3 +70,11 @@ def heelartikeltoevoegen(gegevens):
     mycursor.execute(sql, val)
     mydb.commit()
     return "{\"inhoud\":\"de post is gelukt\"}"
+
+def artikel_stel_prioriteit_in_af(artikelid, prioriteit):
+    mydb = maakverbinding()
+    mycursor = mydb.cursor()
+    sql = "UPDATE artikel3 SET prioriteit = "+str(prioriteit)+" WHERE id = "+str(artikelid)
+    mycursor.execute(sql)
+    mydb.commit()
+    return "updated"
